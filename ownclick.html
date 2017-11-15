@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+
+        }
+        .left{
+            float: left;
+            padding: 0 0 328px 0;
+        }
+        .left div{
+            width: 800px;
+            height: 300px;
+            line-height: 300px;
+            text-align: center;
+            font-size: 30px;
+            background: gray;
+            margin: 10px 0;
+        }
+        .nav{
+            position: absolute;
+            right:20px;
+            top: 20px;
+        }
+        .nav div{
+            width: 100px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            background: pink;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+        .bottom{
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <img style="width:100%" src="http://imagecdn.yinyuewujie.com/o_1bsmo1kpn1hp61bm0176i1bk618uo9.jpg" alt="">
+    <div class="bottom">
+            <div class="left">
+                    <div class="one" id="one">
+                        一
+                    </div>
+                    <div class="conOne" id="two">
+                           二 
+                    </div>
+                    <div id="three">
+                        三
+                    </div>
+                    <div id="four">
+                        四
+                    </div>
+                </div>
+                <div class="nav">
+                    <div class="one">one</div>
+                    <div class="two">two</div>
+                    <div class="three">three</div>
+                    <div class="four">four</div>
+                </div>
+    </div>
+    <script src="jquery.js"></script>
+    <script>
+        $(window).scroll(function(e){
+            console.log($(window).scrollTop());
+            if ($(window).scrollTop() >$('#one').offset().top) {
+               $('.nav').css({'position':'fixed'});
+            console.log('ss');
+            } else{
+                $('.nav').css({'position':'absolute'});
+            }
+        })
+        $('.nav div').click(function(){
+            var clas = $(this).attr('class');
+            var x = $('#'+clas).offset().top;
+            console.log(x);
+            $('html, body').animate({scrollTop:x+'px'},500);
+        })
+    </script>
+</body>
+</html>
